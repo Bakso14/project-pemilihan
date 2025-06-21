@@ -20,7 +20,7 @@
             </div>
         @endif
 
-        <form action="/" method="POST" class="space-y-4">
+        <form action="{{ route('project.submit') }}" method="POST" class="space-y-4">
             @csrf
 
             <div>
