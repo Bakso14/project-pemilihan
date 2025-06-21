@@ -57,11 +57,48 @@
             </div>
 
             <div class="text-center">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded mb-6">
                     Kirim
                 </button>
             </div>
         </form>
+
+        <hr class="my-8 mb-6">
+
+        <h2 class="text-xl font-semibold mb-4 text-center">Daftar Mahasiswa yang Telah Mengisi</h2>
+
+        @if($mahasiswas->isEmpty())
+            <p class="text-center text-gray-500">Belum ada mahasiswa yang mengisi formulir.</p>
+        @else
+            <div class="max-h-[300px] overflow-y-auto mt-4 border rounded shadow-inner">
+                <div class="overflow-x-auto">
+                    <table class="w-full border border-gray-300 text-sm">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Nama</th>
+                                <th class="p-2 border">NIM</th>
+                                <th class="p-2 border">Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($mahasiswas as $index => $mhs)
+                            <tr class="text-center">
+                                <td class="p-2 border">{{ $index + 1 }}</td>
+                                <td class="p-2 border">{{ $mhs->nama }}</td>
+                                <td class="p-2 border">{{ $mhs->nim }}</td>
+                                <td class="p-2 border">{{ $mhs->created_at->format('d M Y H:i') }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>`
+        @endif
+
+        
+
+
     </div>
 
 <script>

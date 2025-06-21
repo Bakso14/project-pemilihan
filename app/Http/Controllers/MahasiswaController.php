@@ -11,7 +11,9 @@ class MahasiswaController extends Controller
     public function create()
     {
         $projects = Project::withCount('mahasiswas')->get();
-        return view('form', compact('projects'));
+        $mahasiswas = Mahasiswa::with('project')->latest()->get();
+        
+        return view('form', compact('projects', 'mahasiswas'));
     }
 
     public function store(Request $request)
